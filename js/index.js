@@ -86,7 +86,12 @@
     let age;
     let password;
     let password_confirmed;
+    
 
+
+
+    let email1;
+    let password1;
     let a = "@";
 
         if (useranswer === "1") {
@@ -127,11 +132,10 @@
 
                 console.log("Name is valid");
                 NameIsValid = true;
-                Name.push(name1);
+                Name = name1;
             }
             
             let EmailIsValid = false;
-            let email1;
 
             while (!EmailIsValid) {
                 email1 = prompt("Please enter your email: (it should not contain spaces and it should be at least 10 characters long and it should contain exactly one @ symbol and it should be unique (should contain a number and a special character))").toLowerCase();
@@ -158,7 +162,7 @@
                 }
                 console.log("Email is valid");
                 EmailIsValid = true;
-                email.push(email1);
+                email = email1;
             }
 
             let AgeIsValid = false;
@@ -185,11 +189,10 @@
                 }
                 console.log("Age is valid");
                 AgeIsValid = true;
-                age.push(age1);
+                age = age1;
             }
 
             let PasswordIsValid = false;
-            let password1;
             while (!PasswordIsValid) {
                 password1 = prompt("Please enter your password: (it should be at least 7 characters long and it should contain at least one uppercase letter and one lowercase letter and one number and one special character)");
                 password1 = password1.trim();
@@ -212,7 +215,7 @@
 
                 console.log("Password is valid");
                 PasswordIsValid = true;
-                password.push(password1);
+                password = password1;
             }
 
             let PasswordConfirmedIsValid = false;
@@ -230,7 +233,7 @@
                 }
                 console.log("Password confirmed is valid");
                 PasswordConfirmedIsValid = true;
-                password_confirmed.push(password_confirmed1);
+                password_confirmed = password_confirmed1;
             }
     }
     console.log("Name: " + Name);
@@ -244,6 +247,10 @@
         let loginemail = prompt("Please enter your email");
         let loginpassword = prompt("Please enter your password");
         
+        if (!email1 || !password1) {
+            alert("No account found. Please sign up first.");
+            return;
+        }
         while (loginemail && loginpassword) {
             if (loginemail === email && loginpassword === password) {
                 alert("Login successful");
@@ -254,18 +261,55 @@
                 loginpassword = prompt("Please enter your password");
             }
         }
+        let balanceanswer = prompt("Welcome to the bank.\n would u like to know how much money u have?");
+        let userbalance = 1000;
+        if (balanceanswer === "1") {
+            alert("You have " + userbalance + " Dh");
+        }
+        
+        let loginanswer = prompt("1-Logout \n 2-withdraw Money \n 3-deposit Money \n 4-take a loan \n 5- invest");
+        if (loginanswer === "1") {
+            alert("Logout successful");
+        }
+        if (loginanswer === "2") {
+            let withdraw = Number(prompt("Please enter the amount you want to withdraw"));
+            if (withdraw > userbalance) {
+                alert("You don't have enough money");
+            }else {
+                userbalance -= withdraw;
+                alert("Withdraw successful");
+            }
+        }
+        if (loginanswer === "3") {
+            let deposit = Number(prompt("Please enter the amount you want to deposit"));
+            userbalance += deposit;
+            alert("Deposit successful");
+        }
+        if (loginanswer === "4") {
+            let loan = Number(prompt("Please enter the amount you want to loan"));
+            userbalance += loan;
+            alert("Loan successful");
+            alert("You have " + userbalance + " Dh");
+
+        }
+        if (loginanswer === "5") {
+            let invest = Number(prompt("Please enter the amount you want to invest"));
+            userbalance -= invest;
+            alert("Invest successful");
+            alert("You have " + userbalance + " Dh");
+        }
     }
 
     if (useranswer === "3") {
         let email2 = prompt("Please enter your email");
-        if (email2 === email) {
+        if (email2 === email1) {
             alert("Email is valid");
         }else {
             alert("Email is not valid");
         }
-        if (email2 === email) {
+        if (email2 === email1) {
             newpassword = prompt("Please enter your new password : ");
-            password = newpassword;
+            password1 = newpassword;
             alert("Password changed successfully");
         }
     }
