@@ -256,7 +256,7 @@
 
 
     if (useranswer === "2") {
-        let loginemail = prompt("Please enter your email");
+        let loginemail = prompt("Please enter your email").toLocaleLowerCase();
         let loginpassword = prompt("Please enter your password");
         
         if (!email1 || !password1) {
