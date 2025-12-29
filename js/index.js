@@ -78,7 +78,6 @@
 //             # History:
 //             - Ability to view the entire transaction history.
 
-    let useranswer = prompt("Welcome to our bank, please choose an option: \n 1- Sign up \n 2- Login \n 3- Change password \n type exit to exit");
     let specialCharacters = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
     let numbers = /[0-9]/;
     let Name;
@@ -93,7 +92,20 @@
     let email1;
     let password1;
     let a = "@";
+    
+    while (true) {
+    let useranswer = prompt(
+        "Welcome to our bank, please choose an option: \n 1- Sign up \n 2- Login \n 3- Change password \n type exit to exit"
+    );
 
+    if (useranswer.toLowerCase() === "exit") {
+        alert("Goodbye!");
+        break;
+    }
+
+
+
+    
         if (useranswer === "1") {
             let NameIsValid = false;
             let name1;
@@ -249,7 +261,6 @@
         
         if (!email1 || !password1) {
             alert("No account found. Please sign up first.");
-            return;
         }
         while (loginemail && loginpassword) {
             if (loginemail === email && loginpassword === password) {
@@ -313,6 +324,6 @@
             alert("Password changed successfully");
         }
     }
-
+}
     
     
