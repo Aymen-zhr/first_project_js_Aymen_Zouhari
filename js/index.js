@@ -256,5 +256,19 @@
         }
     }
 
+    if (useranswer === "3") {
+        let email2 = prompt("Please enter your email");
+        if (email2 === email) {
+            alert("Email is valid");
+        }else {
+            alert("Email is not valid");
+        }
+        if (email2 === email) {
+            newpassword = prompt("Please enter your new password : ");
+            password = newpassword;
+            alert("Password changed successfully");
+        }
+    }
+
     
     
