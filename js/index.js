@@ -81,11 +81,11 @@
     let useranswer = prompt("Welcome to our bank, please choose an option: \n 1- Sign up \n 2- Login \n 3- Change password \n type exit to exit");
     let specialCharacters = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
     let numbers = /[0-9]/;
-    let Name = [];
-    let email = [];
-    let age = [];
-    let password = [];
-    let password_confirmed = [];
+    let Name;
+    let email;
+    let age;
+    let password;
+    let password_confirmed;
 
     let a = "@";
 
@@ -188,10 +188,57 @@
                 age.push(age1);
             }
 
+            let PasswordIsValid = false;
+            let password1;
+            while (!PasswordIsValid) {
+                password1 = prompt("Please enter your password: (it should be at least 7 characters long and it should contain at least one uppercase letter and one lowercase letter and one number and one special character)");
+                password1 = password1.trim();
+                if (password1.includes(" ")) {
+                    alert("Password cannot contain spaces");
+                    continue;
+                }
+                if (password1.length === 0) {
+                    alert("Password cannot be empty");
+                    continue;
+                }
+                if (password1.length < 7) {
+                    alert("Password must be at least 7 characters long");
+                    continue;
+                }
+                if (!specialCharacters.test(password1)) {
+                    alert("Password must contain a special character");
+                    continue;
+                }
 
+                console.log("Password is valid");
+                PasswordIsValid = true;
+                password.push(password1);
+            }
+
+           
+    }
     console.log("Name: " + Name);
     console.log("Email: " + email);
     console.log("Age: " + age);
+    console.log("Password: " + password);
+    console.log("Password confirmed: " + password_confirmed);
+
+
+    if (useranswer === "2") {
+        let loginemail = prompt("Please enter your email");
+        let loginpassword = prompt("Please enter your password");
+        
+        while (loginemail && loginpassword) {
+            if (loginemail === email && loginpassword === password) {
+                alert("Login successful");
+                break;
+            }else {
+                alert("Login failed");
+                loginemail = prompt("Please enter your email");
+                loginpassword = prompt("Please enter your password");
+            }
+        }
+    }
 
     
     
