@@ -215,7 +215,23 @@
                 password.push(password1);
             }
 
-           
+            let PasswordConfirmedIsValid = false;
+            let password_confirmed1;
+            while (!PasswordConfirmedIsValid) {
+                password_confirmed1 = prompt("Please confirm your password");
+                password_confirmed1 = password_confirmed1.trim();
+                if (password_confirmed1.length === 0) {
+                    alert("Password cannot be empty");
+                    continue;
+                }
+                if (password_confirmed1 !== password1) {
+                    alert("Passwords do not match");
+                    continue;
+                }
+                console.log("Password confirmed is valid");
+                PasswordConfirmedIsValid = true;
+                password_confirmed.push(password_confirmed1);
+            }
     }
     console.log("Name: " + Name);
     console.log("Email: " + email);
