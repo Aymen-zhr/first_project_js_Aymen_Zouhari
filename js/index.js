@@ -77,3 +77,54 @@
             
 //             # History:
 //             - Ability to view the entire transaction history.
+
+    let useranswer = prompt("Welcome to our bank, please choose an option: \n 1- Sign up \n 2- Login \n 3- Change password \n type exit to exit");
+    let specialCharacters = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+    let numbers = /[0-9]/;
+
+
+        if (useranswer === "1") {
+            let NameIsValid = false;
+            let name1;
+
+            while (!NameIsValid) {
+                name1 = prompt("Please enter your name: (it should start with a capital letter and rest lowercase and it should not contain numbers or special characters and it should be at least 5 characters long)");
+                if (!name1) {
+                    alert("Name cannot be empty");
+                    continue;
+                }
+                name1 = name1.trim();
+                if (name1.length === 0) {
+                    alert("Name cannot be empty");
+                    continue;
+                }
+                if (name1.length < 5) {
+                    alert("Name must be at least 5 characters long");
+                    continue;
+                }
+                if (specialCharacters.test(name1)) {
+                    alert("Name cannot contain special characters");
+                    continue;
+                }
+                if (numbers.test(name1)) {
+                    alert("Name cannot contain numbers");
+                    continue;
+                }
+                let words = name1.split(" ").filter(Boolean);
+                let capitalizationError = false;
+                for (let word of words) {
+                    if (word[0] !== word[0].toUpperCase() || word.slice(1) !== word.slice(1).toLowerCase()) {
+                        capitalizationError = true;
+                        break;
+                    }
+                }
+                if (capitalizationError) {
+                    alert("Each word must start with a capital letter and rest lowercase");
+                    continue;
+                }
+
+                console.log("Name is valid");
+                NameIsValid = true;
+            }
+   
+    }
