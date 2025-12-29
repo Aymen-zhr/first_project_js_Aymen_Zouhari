@@ -81,7 +81,13 @@
     let useranswer = prompt("Welcome to our bank, please choose an option: \n 1- Sign up \n 2- Login \n 3- Change password \n type exit to exit");
     let specialCharacters = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
     let numbers = /[0-9]/;
+    let Name = [];
+    let email = [];
+    let age = [];
+    let password = [];
+    let password_confirmed = [];
 
+    let a = "@";
 
         if (useranswer === "1") {
             let NameIsValid = false;
@@ -89,10 +95,6 @@
 
             while (!NameIsValid) {
                 name1 = prompt("Please enter your name: (it should start with a capital letter and rest lowercase and it should not contain numbers or special characters and it should be at least 5 characters long)");
-                if (!name1) {
-                    alert("Name cannot be empty");
-                    continue;
-                }
                 name1 = name1.trim();
                 if (name1.length === 0) {
                     alert("Name cannot be empty");
@@ -125,6 +127,45 @@
 
                 console.log("Name is valid");
                 NameIsValid = true;
+                Name.push(name1);
             }
-   
+            
+            let EmailIsValid = false;
+            let email1;
+
+            while (!EmailIsValid) {
+                email1 = prompt("Please enter your email: (it should not contain spaces and it should be at least 10 characters long and it should contain exactly one @ symbol and it should be unique (should contain a number and a special character))").toLowerCase();
+                email1 = email1.trim();
+                if (email1.length === 0) {
+                    alert("Email cannot be empty");
+                    continue;
+                }
+                if (email1.length < 10) {
+                    alert("Email must be at least 10 characters long");
+                    continue;
+                }
+                if (!email1.includes(a)) {
+                    alert("Email must contain exactly one @ symbol");
+                    continue;
+                }
+                if (!numbers.test(email1)) {
+                    alert("Email must contain a number");
+                    continue;
+                }
+                if (!specialCharacters.test(email1)) {
+                    alert("Email must contain a special character");
+                    continue;
+                }
+                console.log("Email is valid");
+                EmailIsValid = true;
+                email.push(email1);
+            }
+
+            let AgeIsValid = false;
+            let age1;
+
+
     }
+    console.log("Name: " + Name);
+    console.log("Email: " + email);
+    
