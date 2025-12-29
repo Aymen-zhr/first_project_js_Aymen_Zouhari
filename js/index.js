@@ -240,21 +240,7 @@
     console.log("Password confirmed: " + password_confirmed);
 
 
-    if (useranswer === "2") {
-        let loginemail = prompt("Please enter your email");
-        let loginpassword = prompt("Please enter your password");
-        
-        while (loginemail && loginpassword) {
-            if (loginemail === email && loginpassword === password) {
-                alert("Login successful");
-                break;
-            }else {
-                alert("Login failed");
-                loginemail = prompt("Please enter your email");
-                loginpassword = prompt("Please enter your password");
-            }
-        }
-    }
+
 
     
     
