@@ -164,8 +164,34 @@
             let AgeIsValid = false;
             let age1;
 
+            while (!AgeIsValid) {
+                age1 = prompt("Please enter your age: (it should be at least 18 years old)");
+                if (isNaN(age1)) {
+                    alert("Age must be a number");
+                    continue;
+                }
+                if (age1.length > 2) {
+                    alert("Age must be at most 2 digits long");
+                    continue;
+                }
+                age1 = age1.trim();
+                if (age1.length === 0) {
+                    alert("Age cannot be empty");
+                    continue;
+                }
+                if (age1 < 18) {
+                    alert("Age must be at least 18 years old");
+                    continue;
+                }
+                console.log("Age is valid");
+                AgeIsValid = true;
+                age.push(age1);
+            }
 
-    }
+
     console.log("Name: " + Name);
     console.log("Email: " + email);
+    console.log("Age: " + age);
+
+    
     
